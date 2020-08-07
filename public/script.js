@@ -2,10 +2,8 @@ const socket = io('/');
 
 const videoGrid = document.getElementById('video-grid');
 
-const myPeer = new Peer(undefined, {
-    host: '/',
-    port: process.env.PORT || '3001'
-});
+const myPeer = new Peer(undefined);
+
 
 myPeer.on('open', id => {
     socket.emit('join-room', ROOM_ID, id);
