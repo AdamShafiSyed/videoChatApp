@@ -4,7 +4,7 @@ const videoGrid = document.getElementById('video-grid');
 
 const myPeer = new Peer(undefined, {
     host: '/',
-    port: '3001'
+    port: process.env.PORT || '3001'
 });
 
 myPeer.on('open', id => {
