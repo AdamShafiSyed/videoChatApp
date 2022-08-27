@@ -12,6 +12,7 @@ myPeer.on('open', id => {
 
 const myVideo = document.createElement('video');
 myVideo.muted = true;
+myVideo.className = 'local_video';
 const peers = {};
 navigator.mediaDevices.getUserMedia({
     video: true,
@@ -68,3 +69,23 @@ video.addEventListener('loadedmetadata', () => {
 
 videoGrid.append(video);
 }
+
+
+let zoomBtn = document.getElementById('zoom');
+if(zoomBtn){
+zoomBtn.addEventListener('click', function(){
+    let local_video = document.querySelector('.local_video');
+    if(zoomBtn.textContent === 'Zoom Out [ - ]') {
+        zoomBtn.textContent = 'Zoom In [ + ]';
+        if( local_video.classList.contains('zoom_in')) {
+            local_video.classList.remove('zoom_in');
+        }
+        local_video.classList.add('zoom_out');
+    } else {
+        zoomBtn.textContent = 'Zoom Out [ - ]';
+        if( local_video.classList.contains('zoom_out')) {
+            local_video.classList.remove('zoom_out');
+        }
+        local_video.classList.add('zoom_in');
+    }
+})}
